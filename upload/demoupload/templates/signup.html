@@ -9,39 +9,37 @@
 	<link href=" css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-
+<center>
 <div class="main">
     <h1> Instagram Clone</h1>
     <h3>Sign Up</h3>
     <h4>todays date and time : {{today}}</h4>
     <form method="post">
         {% csrf_token %}
-
-
         <div>
             <label for="username">Username: </label>
             <input id="username" type="text" name="username" value="{{username}}">
         </div>
-
         <div>
             <label for="name">Name: </label>
             <input id="name" type="text" name="name" value="{{name}}">
         </div>
-
         <div>
             <label for="email">Email: </label>
             <input id="email" type="text" name="email" value="{{email}}">
         </div>
-
         <div>
             <label for="password">Password: </label>
             <input id="password" type="password" name="password" value="{{password}}">
         </div>
-            <input type="submit" value="Sign Up">
+            <input type="submit" value="Sign Up"><br><br>
     </form>
+    <form method="get" action="/login/">
+        <button type="submit">login</button>
 
-
+    </form>
 </div>
+</center>
     <!--javascript files-->
 	<!--jquery libray-->
 	<script src="js/jquery-3.2.1.js">
