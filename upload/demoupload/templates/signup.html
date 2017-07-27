@@ -15,8 +15,10 @@
     <h3>Sign Up</h3>
     <h4>todays date and time : {{today}}</h4>
     <form method="post">
-        {% csrf_token %}
-        <div>
+    {% csrf_token %}
+        
+        
+        <div
             <label for="username">Username: </label>
             <input id="username" type="text" name="username" value="{{username}}">
         </div>
@@ -33,6 +35,7 @@
             <input id="password" type="password" name="password" value="{{password}}">
         </div>
             <input type="submit" value="Sign Up"><br><br>
+        <img src="upload\static\images\ab.jpg" align="left">
     </form>
     <form method="get" action="/login/">
         <button type="submit">login</button>

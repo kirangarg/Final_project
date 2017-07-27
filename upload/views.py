@@ -23,7 +23,8 @@ def signup_view(request):
              user = UserModel(name=name, password=make_password(password), email=email, username=username)
              user.save()
              template_name = 'success.html'
-
+         else:
+             template_name = 'fail.html'
      elif request.method == "GET":
          form = SignUpForm()
          template_name = 'signup.html'
