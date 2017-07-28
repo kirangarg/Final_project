@@ -7,7 +7,7 @@ from django.utils import timezone
 from demoupload.forms import SignUpForm , LoginForm ,PostForm,LikeForm,CommentForm
 from django.contrib.auth.hashers import make_password,check_password
 from demoupload.models import UserModel, SessionToken,PostModel,LikeModel,CommentModel
-from  upload.settings import BASE_DIR
+from upload.settings import BASE_DIR
 from imgurpython import ImgurClient
 
 # Create your views here.
@@ -19,10 +19,10 @@ def signup_view(request):
              name = form.cleaned_data['name']
              email = form.cleaned_data['email']
              password = form.cleaned_data['password']
-             # save data to database
+              # save data to database
              user = UserModel(name=name, password=make_password(password), email=email, username=username)
              user.save()
-             template_name = 'success.html'
+             template_name='success.html'
          else:
              template_name = 'fail.html'
      elif request.method == "GET":
@@ -81,8 +81,9 @@ def feed_view(request):
 def post_view(request):
     user = check_validation(request)
     if user:
-        if request.METHOD == 'GET':
+        if request.method == 'GET':
             form = PostForm()
+            return render(request,'post.html',{'form':form})
         elif request.method == 'POST':
             form = PostForm(request.POST, request.FILES)
             if form.is_valid():
@@ -90,19 +91,21 @@ def post_view(request):
                 caption = form.cleaned_data.get('caption')
                 post = PostModel(user=user, image=image, caption=caption)
                 post.save()
-                path = str(BASE_DIR + post.image.url)
+                path = str(BASE_DIR +"\\"+ post.image.url)
                 client_id = '742b79040421911'
                 client_secret = 'c08a07068ca08fd686ec919784d48a9497c5237f'
-                client = ImgurClient('client_id', 'client_secret')
+                client = ImgurClient(client_id,client_secret)
                 post.image_url = client.upload_from_path(path, anon=True)['link']
                 post.save()
                 return redirect('/feed/')
+            else:
+                form = PostForm()
+                return render(request, 'post.html', {'form': form})
         else:
             form = PostForm()
             return render(request, 'post.html', {'form': form})
     else:
         return redirect('/login/')
-
 
 def like_view(request):
     user = check_validation(request)
