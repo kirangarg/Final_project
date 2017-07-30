@@ -19,10 +19,12 @@ def signup_view(request):
              name = form.cleaned_data['name']
              email = form.cleaned_data['email']
              password = form.cleaned_data['password']
-              # save data to database
-             user = UserModel(name=name, password=make_password(password), email=email, username=username)
-             user.save()
-             template_name='success.html'
+             if len(username)>4 and len(password)>5:
+                user = UserModel(name=name, password=make_password(password), email=email, username= username)
+                user.save()
+                template_name='success.html'
+             else:
+                 template_name = 'fail.html'
          else:
              template_name = 'fail.html'
      elif request.method == "GET":
@@ -67,7 +69,7 @@ def login_view(request):
 def feed_view(request):
     user = check_validation(request)
     if user:
-        posts = PostModel.objects.all().order_by('created_on')
+        posts = PostModel.objects.all().order_by('-created_on')
         for post in posts:
             existing_like = LikeModel.objects.filter(post_id=post.id, user=user).first()
             if existing_like:
@@ -147,3 +149,10 @@ def check_validation(request):
     else:
         return None
 
+def log_out(request):
+	if request.COOKIES.get('session_token'):
+		response = redirect("/feed/")
+		response.set_cookie(key='session_token', value=None)
+		return response
+	else:
+		return None
