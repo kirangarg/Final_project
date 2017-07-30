@@ -147,5 +147,3 @@ def check_validation(request):
     else:
         return None
 
-
-

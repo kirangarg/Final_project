@@ -8,29 +8,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--bootstrap-->
 	<link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+<style>
+h1{background-color:#ffff;width:50%;font:vani;size:90px;color:grey;}
+#id1{margin-left:50px;margin-right:25px;height:30px;width:250px;}
+demo{background-color:black;width:30%;height:800px;align:center;}
+.d1{font-style:bold;float:center;font:Times new roman;font-size:20px;background-color:#F5FFFA;color:grey;}
+.div1 {width:500px;height: 200px;padding:30px;border: 1px solide grey;}
+.flex-container{display: -webkit-flex;display: flex;width:400px;height: 250px;background-color:lightgrey;align:center;}
+.flex-item{background-color : pink;width: 100px;height: 500px;margin:10px;align:center;}
+</style>
 </head>
 <body>
-<div class="main">
-    <h1> Instagram Clone</h1>
-    <h3>login</h3>
-    #login.html
-    <form method="post">
-        {% csrf_token %}
-
-        <div>
-            <label for="username">Username: </label>
-            <input id="username" type="text" name="username" value="">
+<table align="center"><tbody><tr>
+    <td><img src=""></img></td>
+    <td bgcolor="#F5FFFA">
+        <div class="row"align="center"class="flex-container">
+            <div class="col-sm-4 col-sm-offset-4" class="div1"></div>
+            <h1 id="h1">LOGIN PAGE</h1>
+            <p class="d1" bgcolor="#F5FFFA">Login for connective ypur social world.</p><br>
+            <form id="demo"method="POST">
+                {% csrf_token %}<br>
+                <label for="username">USERNAME: </label><br>
+                <input id="username" type="text" name="username" value="{{ username }}"size="50"><br><br>
+                 <label for="username">PASSWORD: </label><br>
+                <input id="password" name="password" type="password" value="{{ password }}"size="50"><br><br>
+                <div><input type="submit"value="login"></div>
+            </form><br><br>
         </div>
-
-        <div>
-            <label for="password">Password: </label>
-            <input id="password" type="password" name="password" value="">
-        </div>
-
-        <input type="submit" value="Log In" class = "btn btn-success">
-
-    </form>
-</div>
+    </td></tr></tbody></table>
 
 <!--javascript files-->
 <!--jquery libray-->

@@ -1,13 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+     <title>bootstrap demo</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--bootstrap-->
+	      <link href="css/bootstrap.css" rel="stylesheet">
+    <style>
+        h1{background-color:#ffff;width:50%;font:vani;size:90px;color:grey;}
+        demo{background-color:black;width:30%;height:800px;align:center;}
+        .flex-container{display: -webkit-flex;display: flex;width:400px;height: 250px;background-color:lightgrey;align:center;}
+        .flex-item{background-color : pink;width: 100px;height: 500px;margin:10px;align:center;}
+    </style>
 </head>
 <body>
-    User successfully signed up. Please continue for login.
-    <form action="/login/" method="get">
-        <input type="submit"  value="Login">
+<table align="center"><tbody><tr><td>
+    <div class="row"align="center"class="flex-container">
+    <h1>User successfully signed up. Please continue for login.</h1>
+     <form id="demo" action="/login/" method="get">
+         <div><input type="submit"value="login"></div>
     </form>
+    </div>
+</td></tr></tbody></table>
+<!--javascript files-->
+<!--jquery libray-->
+  <!--Javascript files-->
+      <!--Jquery library-->
+      <script src="js/jquery-3.2.1.js"></script>
+      <!--Bootstrap js Library-->
+      <script scr="js/bootstrap.js"></script>
 </body>
 </html>

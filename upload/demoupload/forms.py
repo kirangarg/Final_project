@@ -27,3 +27,5 @@ class CommentForm(forms.ModelForm):
     model = CommentModel
     fields = ['comment_text', 'post']
 
+
+
